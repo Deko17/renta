@@ -517,7 +517,7 @@ const StayDetailPageContainer: FC<{}> = () => {
 				</form>
 
 				{/* SUM */}
-				<div className="flex flex-col space-y-4">
+				{/* <div className="flex flex-col space-y-4">
 					<div className="flex justify-between text-neutral-6000 dark:text-neutral-300">
 						<span>$119 x 3 night</span>
 						<span>$357</span>
@@ -531,7 +531,7 @@ const StayDetailPageContainer: FC<{}> = () => {
 						<span>Total</span>
 						<span>$199</span>
 					</div>
-				</div>
+				</div> */}
 
 				{/* SUBMIT */}
 				<ButtonPrimary href={"/checkout"}>Reserve</ButtonPrimary>
