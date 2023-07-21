@@ -48,92 +48,92 @@ import ListingCarDetailPage from "containers/ListingDetailPage/listing-car-detai
 import ListingExperiencesDetailPage from "containers/ListingDetailPage/listing-experiences-detail/ListingExperiencesDetailPage";
 
 export const pages: Page[] = [
-  { path: "/", exact: true, component: PageHome },
-  { path: "/#", exact: true, component: PageHome },
-  { path: "/home-1-header-2", exact: true, component: PageHome },
-  { path: "/home-2", component: PageHome2 },
-  { path: "/home-3", component: PageHome3 },
-  //
-  { path: "/listing-stay", component: ListingStayPage },
-  { path: "/listing-stay-map", component: ListingStayMapPage },
-  { path: "/listing-stay-detail", component: ListingStayDetailPage },
-  //
-  {
-    path: "/listing-experiences",
-    component: ListingExperiencesPage,
-  },
-  {
-    path: "/listing-experiences-map",
-    component: ListingExperiencesMapPage,
-  },
-  {
-    path: "/listing-experiences-detail",
-    component: ListingExperiencesDetailPage,
-  },
-  //
-  { path: "/listing-car", component: ListingCarPage },
-  { path: "/listing-car-map", component: ListingCarMapPage },
-  { path: "/listing-car-detail", component: ListingCarDetailPage },
-  //
-  { path: "/listing-real-estate-map", component: ListingRealEstateMapPage },
-  { path: "/listing-real-estate", component: ListingRealEstatePage },
-  //
-  { path: "/listing-flights", component: ListingFlightsPage },
-  //
-  { path: "/checkout", component: CheckOutPage },
-  { path: "/pay-done", component: PayPage },
-  //
-  { path: "/author", component: AuthorPage },
-  { path: "/account", component: AccountPage },
-  { path: "/account-password", component: AccountPass },
-  { path: "/account-savelists", component: AccountSavelists },
-  { path: "/account-billing", component: AccountBilling },
-  //
-  { path: "/blog", component: BlogPage },
-  { path: "/blog-single", component: BlogSingle },
-  //
-  { path: "/add-listing-1", component: PageAddListing1 },
-  { path: "/add-listing-2", component: PageAddListing2 },
-  { path: "/add-listing-3", component: PageAddListing3 },
-  { path: "/add-listing-4", component: PageAddListing4 },
-  { path: "/add-listing-5", component: PageAddListing5 },
-  { path: "/add-listing-6", component: PageAddListing6 },
-  { path: "/add-listing-7", component: PageAddListing7 },
-  { path: "/add-listing-8", component: PageAddListing8 },
-  { path: "/add-listing-9", component: PageAddListing9 },
-  { path: "/add-listing-10", component: PageAddListing10 },
-  //
-  { path: "/contact", component: PageContact },
-  { path: "/about", component: PageAbout },
-  { path: "/signup", component: PageSignUp },
-  { path: "/login", component: PageLogin },
-  { path: "/subscription", component: PageSubcription },
-  //
+	{ path: "/", exact: true, component: PageHome2 },
+	{ path: "/#", exact: true, component: PageHome2 },
+	{ path: "/home-1-header-2", exact: true, component: PageHome },
+	{ path: "/home-2", component: PageHome2 },
+	{ path: "/home-3", component: PageHome3 },
+	//
+	{ path: "/listing-stay", component: ListingStayPage },
+	{ path: "/listing-stay-map", component: ListingStayMapPage },
+	{ path: "/listing-stay-detail", component: ListingStayDetailPage },
+	//
+	{
+		path: "/listing-experiences",
+		component: ListingExperiencesPage,
+	},
+	{
+		path: "/listing-experiences-map",
+		component: ListingExperiencesMapPage,
+	},
+	{
+		path: "/listing-experiences-detail",
+		component: ListingExperiencesDetailPage,
+	},
+	//
+	{ path: "/listing-car", component: ListingCarPage },
+	{ path: "/listing-car-map", component: ListingCarMapPage },
+	{ path: "/listing-car-detail", component: ListingCarDetailPage },
+	//
+	{ path: "/listing-real-estate-map", component: ListingRealEstateMapPage },
+	{ path: "/listing-real-estate", component: ListingRealEstatePage },
+	//
+	{ path: "/listing-flights", component: ListingFlightsPage },
+	//
+	{ path: "/checkout", component: CheckOutPage },
+	{ path: "/pay-done", component: PayPage },
+	//
+	{ path: "/author", component: AuthorPage },
+	{ path: "/account", component: AccountPage },
+	{ path: "/account-password", component: AccountPass },
+	{ path: "/account-savelists", component: AccountSavelists },
+	{ path: "/account-billing", component: AccountBilling },
+	//
+	{ path: "/blog", component: BlogPage },
+	{ path: "/blog-single", component: BlogSingle },
+	//
+	{ path: "/add-listing-1", component: PageAddListing1 },
+	{ path: "/add-listing-2", component: PageAddListing2 },
+	{ path: "/add-listing-3", component: PageAddListing3 },
+	{ path: "/add-listing-4", component: PageAddListing4 },
+	{ path: "/add-listing-5", component: PageAddListing5 },
+	{ path: "/add-listing-6", component: PageAddListing6 },
+	{ path: "/add-listing-7", component: PageAddListing7 },
+	{ path: "/add-listing-8", component: PageAddListing8 },
+	{ path: "/add-listing-9", component: PageAddListing9 },
+	{ path: "/add-listing-10", component: PageAddListing10 },
+	//
+	{ path: "/contact", component: PageContact },
+	{ path: "/about", component: PageAbout },
+	{ path: "/signup", component: PageSignUp },
+	{ path: "/login", component: PageLogin },
+	{ path: "/subscription", component: PageSubcription },
+	//
 ];
 
 const MyRoutes = () => {
-  let WIN_WIDTH = useWindowSize().width;
-  if (typeof window !== "undefined") {
-    WIN_WIDTH = WIN_WIDTH || window.innerWidth;
-  }
+	let WIN_WIDTH = useWindowSize().width;
+	if (typeof window !== "undefined") {
+		WIN_WIDTH = WIN_WIDTH || window.innerWidth;
+	}
 
-  return (
-    <BrowserRouter>
-      <ScrollToTop />
-      <SiteHeader />
+	return (
+		<BrowserRouter>
+			<ScrollToTop />
+			<SiteHeader />
 
-      <Routes>
-        {pages.map(({ component, path }) => {
-          const Component = component;
-          return <Route key={path} element={<Component />} path={path} />;
-        })}
-        <Route element={<Page404 />} />
-      </Routes>
+			<Routes>
+				{pages.map(({ component, path }) => {
+					const Component = component;
+					return <Route key={path} element={<Component />} path={path} />;
+				})}
+				<Route element={<Page404 />} />
+			</Routes>
 
-      {WIN_WIDTH < 768 && <FooterNav />}
-      <Footer />
-    </BrowserRouter>
-  );
+			{WIN_WIDTH < 768 && <FooterNav />}
+			<Footer />
+		</BrowserRouter>
+	);
 };
 
 export default MyRoutes;

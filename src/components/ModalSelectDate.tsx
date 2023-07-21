@@ -1,140 +1,118 @@
+import React, { FC, Fragment, useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import { Dialog, Transition } from "@headlessui/react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
-import React, { FC, Fragment, useState } from "react";
-import DatePickerCustomHeaderTwoMonth from "./DatePickerCustomHeaderTwoMonth";
-import DatePickerCustomDay from "./DatePickerCustomDay";
-import ButtonPrimary from "shared/Button/ButtonPrimary";
 
 interface ModalSelectDateProps {
-  renderChildren?: (p: { openModal: () => void }) => React.ReactNode;
+	startDate: Date | null;
+	endDate: Date | null;
+	numOfDays: number;
+	onChangeDate: (start: Date, end: Date) => void;
+	renderChildren: ({ openModal }: { openModal: () => void }) => React.ReactNode;
 }
 
-const ModalSelectDate: FC<ModalSelectDateProps> = ({ renderChildren }) => {
-  const [showModal, setShowModal] = useState(false);
+const ModalSelectDate: FC<ModalSelectDateProps> = ({
+	startDate,
+	endDate,
+	numOfDays,
+	onChangeDate,
+	renderChildren,
+}) => {
+	const [showModal, setShowModal] = useState(false);
 
-  const [startDate, setStartDate] = useState<Date | null>(
-    new Date("2023/02/06")
-  );
-  const [endDate, setEndDate] = useState<Date | null>(new Date("2023/02/23"));
+	const closeModal = () => {
+		setShowModal(false);
+	};
 
-  const onChangeDate = (dates: [Date | null, Date | null]) => {
-    const [start, end] = dates;
-    setStartDate(start);
-    setEndDate(end);
-  };
+	const openModal = () => {
+		setShowModal(true);
+	};
 
-  // FOR RESET ALL DATA WHEN CLICK CLEAR BUTTON
-  //
-  function closeModal() {
-    setShowModal(false);
-  }
+	const onChangeDateRange = (dates: [Date, Date]) => {
+		const [start, end] = dates;
+		onChangeDate(start, end);
+	};
 
-  function openModal() {
-    setShowModal(true);
-  }
+	useEffect(() => {
+		if (startDate && endDate) {
+			const daysDiff = Math.ceil(
+				(endDate.getTime() - startDate.getTime()) / (1000 * 60 * 60 * 24)
+			);
+			onChangeDate(startDate, endDate);
+		}
+	}, [startDate, endDate, onChangeDate]);
 
-  const renderButtonOpenModal = () => {
-    return renderChildren ? (
-      renderChildren({ openModal })
-    ) : (
-      <button onClick={openModal}>Select Date</button>
-    );
-  };
+	const renderButtonOpenModal = () => {
+		return renderChildren({ openModal });
+	};
 
-  return (
-    <>
-      {renderButtonOpenModal()}
-      <Transition appear show={showModal} as={Fragment}>
-        <Dialog
-          as="div"
-          className="HeroSearchFormMobile__Dialog relative z-50"
-          onClose={closeModal}
-        >
-          <div className="fixed inset-0 bg-neutral-100 dark:bg-neutral-900">
-            <div className="flex h-full">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out transition-transform"
-                enterFrom="opacity-0 translate-y-52"
-                enterTo="opacity-100 translate-y-0"
-                leave="ease-in transition-transform"
-                leaveFrom="opacity-100 translate-y-0"
-                leaveTo="opacity-0 translate-y-52"
-              >
-                <Dialog.Panel className="relative h-full overflow-hidden flex-1 flex flex-col justify-between ">
-                  <>
-                    <div className="absolute left-4 top-4">
-                      <button
-                        className="focus:outline-none focus:ring-0"
-                        onClick={closeModal}
-                      >
-                        <XMarkIcon className="w-5 h-5 text-black dark:text-white" />
-                      </button>
-                    </div>
-
-                    <div className="flex-1 pt-12 p-1 flex flex-col overflow-auto">
-                      <div className="flex-1 flex flex-col bg-white dark:bg-neutral-800">
-                        <div className="flex-1 flex flex-col transition-opacity animate-[myblur_0.4s_ease-in-out] overflow-auto">
-                          <div className="p-5 ">
-                            <span className="block font-semibold text-xl sm:text-2xl">
-                              {` When's your trip?`}
-                            </span>
-                          </div>
-                          <div className="flex-1 relative flex z-10 ">
-                            <div className="overflow-hidden rounded-3xl ">
-                              <DatePicker
-                                selected={startDate}
-                                onChange={onChangeDate}
-                                startDate={startDate}
-                                endDate={endDate}
-                                selectsRange
-                                monthsShown={2}
-                                showPopperArrow={false}
-                                inline
-                                renderCustomHeader={(p) => (
-                                  <DatePickerCustomHeaderTwoMonth {...p} />
-                                )}
-                                renderDayContents={(day, date) => (
-                                  <DatePickerCustomDay
-                                    dayOfMonth={day}
-                                    date={date}
-                                  />
-                                )}
-                              />
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="px-4 py-3 bg-white dark:bg-neutral-900 border-t border-neutral-200 dark:border-neutral-700 flex justify-between">
-                      <button
-                        type="button"
-                        className="underline font-semibold flex-shrink-0"
-                        onClick={() => {
-                          onChangeDate([null, null]);
-                        }}
-                      >
-                        Clear dates
-                      </button>
-                      <ButtonPrimary
-                        sizeClass="px-6 py-3 !rounded-xl"
-                        onClick={() => {
-                          closeModal();
-                        }}
-                      >
-                        Save
-                      </ButtonPrimary>
-                    </div>
-                  </>
-                </Dialog.Panel>
-              </Transition.Child>
-            </div>
-          </div>
-        </Dialog>
-      </Transition>
-    </>
-  );
+	return (
+		<>
+			{renderButtonOpenModal()}
+			{showModal && (
+				<div className="fixed inset-0 z-50 overflow-y-auto">
+					<div className="flex items-center justify-center min-h-screen">
+						<div className="fixed inset-0 bg-black opacity-50"></div>
+						<div className="relative bg-white dark:bg-gray-900 rounded-lg w-[900px]">
+							<div className="flex justify-between items-center px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+								<h3 className="text-lg font-medium text-gray-900 dark:text-white">
+									When's your trip?
+								</h3>
+								<button
+									className="text-gray-400 dark:text-gray-200 hover:text-gray-500 dark:hover:text-gray-300"
+									onClick={closeModal}
+								>
+									<XMarkIcon className="w-6 h-6" />
+								</button>
+							</div>
+							<div className="px-6 py-4">
+								<DatePicker
+									selected={startDate}
+									onChange={onChangeDateRange}
+									startDate={startDate}
+									endDate={endDate}
+									selectsRange
+									monthsShown={2}
+									showPopperArrow={false}
+									inline
+								/>
+							</div>
+							<div className="flex justify-between items-center px-6 py-4 border-t border-gray-200 dark:border-gray-700">
+								<div>
+									<span className="block font-semibold">Selected dates:</span>
+									{startDate && endDate ? (
+										<span>
+											{`${startDate.toDateString()} - ${endDate.toDateString()}`}
+										</span>
+									) : (
+										<span>Select dates</span>
+									)}
+								</div>
+								<div>
+									<span className="block font-semibold">Number of days:</span>
+									<span>{numOfDays}</span>
+								</div>
+							</div>
+							<div className="flex justify-end px-6 py-4">
+								<button
+									className="px-4 py-2 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300"
+									onClick={closeModal}
+								>
+									Cancel
+								</button>
+								<button
+									className="ml-4 px-4 py-2 text-sm font-medium text-white bg-indigo-600 dark:bg-indigo-500 rounded-md hover:bg-indigo-500 dark:hover:bg-indigo-400"
+									onClick={closeModal}
+								>
+									Save
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			)}
+		</>
+	);
 };
 
 export default ModalSelectDate;
