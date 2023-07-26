@@ -166,14 +166,14 @@ function PageHome2() {
 				{/* <SectionDowloadApp /> */}
 
 				{/* SECTION 1 */}
-				<SectionSliderNewCategories
+				{/* <SectionSliderNewCategories
 					categories={DEMO_CATS_2}
 					categoryCardType="card4"
 					itemPerRow={4}
 					heading="Suggestions for discovery"
 					subHeading="Popular places to stay that Chisfis recommends for you"
 					uniqueClassName="PageHome2_s1"
-				/>
+				/> */}
 
 				{/* SECTION */}
 				{/* <div className="relative py-16">
