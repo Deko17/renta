@@ -101,24 +101,16 @@ const Header3: FC<Header3Props> = ({ className = "" }) => {
 						onClick={() => setShowHeroSearch("location")}
 						className="block pl-5 pr-4 cursor-pointer py-3"
 					>
-						Location
+						Забронировть
 					</span>
 					<span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700"></span>
 					<span
 						onClick={() => setShowHeroSearch("dates")}
 						className="block px-4 cursor-pointer py-3 "
 					>
-						Check In
+						Даты
 					</span>
-					<span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700"></span>
-					<span
-						onClick={() => {
-							setShowHeroSearch("guests");
-						}}
-						className="block px-4 cursor-pointer font-normal py-3"
-					>
-						Add guests
-					</span>
+
 				</div>
 
 				<div
@@ -157,7 +149,7 @@ const Header3: FC<Header3Props> = ({ className = "" }) => {
 				<div className="relative px-4 lg:container h-[88px] flex">
 					<div className="flex-1 flex items-center justify-between">
 						{/* Logo (lg+) */}
-						<div className="relative z-10 hidden md:flex flex-1">
+						<div className="relative z-10 hidden md:flex flex-1 text-xl font-serif font-bold">
 							<Logo />
 						</div>
 
@@ -180,18 +172,18 @@ const Header3: FC<Header3Props> = ({ className = "" }) => {
                 hidden xl:inline-flex text-opacity-90
                 group px-4 py-2 border border-neutral-300 hover:border-neutral-400 dark:border-neutral-700 rounded-full items-center text-sm text-gray-700 dark:text-neutral-300 font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
 								>
-									List your property
+									Личный Кабинет
 								</Link>
 
 								<div></div>
-								<SwitchDarkMode />
+								{/* <SwitchDarkMode /> */}
 								<div className="pr-1.5">
 									<NotifyDropdown className="-ml-2 xl:-ml-1" />
 								</div>
 								<AvatarDropdown />
-								<div className="hidden md:block">
+								{/* <div className="hidden md:block">
 									<MenuBar />
-								</div>
+								</div> */}
 							</div>
 						</div>
 					</div>
