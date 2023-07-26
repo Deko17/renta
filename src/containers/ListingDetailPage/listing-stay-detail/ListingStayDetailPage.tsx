@@ -44,7 +44,7 @@ const StayDetailPageContainer: FC<{}> = () => {
 			<div className="listingSection__wrap !space-y-6">
 				{/* 1 */}
 				<div className="flex justify-between items-center">
-					<Badge name="Wooden house" />
+					<Badge name="Квартира" />
 					<LikeSaveBtns />
 				</div>
 
