@@ -11,6 +11,7 @@ import AvatarDropdown from "./AvatarDropdown";
 import MenuBar from "shared/MenuBar/MenuBar";
 import HeroSearchForm2MobileFactory from "components/HeroSearchForm2Mobile/HeroSearchForm2MobileFactory";
 import { StaySearchFormFields } from "components/HeroSearchForm/type";
+import LangDropdown from "./LangDropdown";
 
 interface Header3Props {
 	className?: string;
@@ -24,12 +25,12 @@ const Header3: FC<Header3Props> = ({ className = "" }) => {
 	const [showHeroSearch, setShowHeroSearch] =
 		useState<StaySearchFormFields | null>();
 	//
-	const [currentTab, setCurrentTab] = useState<SearchTab>("Stays");
+	const [currentTab, setCurrentTab] = useState<SearchTab>("Забронировать");
 
 	//
 	useOutsideAlerter(headerInnerRef, () => {
 		setShowHeroSearch(null);
-		setCurrentTab("Stays");
+		setCurrentTab("Забронировать");
 	});
 
 	let location = useLocation();
@@ -103,14 +104,6 @@ const Header3: FC<Header3Props> = ({ className = "" }) => {
 					>
 						Забронировть
 					</span>
-					<span className="h-5 w-[1px] bg-neutral-300 dark:bg-neutral-700"></span>
-					<span
-						onClick={() => setShowHeroSearch("dates")}
-						className="block px-4 cursor-pointer py-3 "
-					>
-						Даты
-					</span>
-
 				</div>
 
 				<div
@@ -174,7 +167,7 @@ const Header3: FC<Header3Props> = ({ className = "" }) => {
 								>
 									Личный Кабинет
 								</Link>
-
+								<LangDropdown />
 								<div></div>
 								{/* <SwitchDarkMode /> */}
 								<div className="pr-1.5">
