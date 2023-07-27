@@ -46,7 +46,7 @@ const DetailPagetLayout = ({ children }: { children: ReactNode }) => {
 			<div className="container ListingDetailPage__content">{children}</div>
 
 			{/* OTHER SECTION */}
-			<div className="container py-24 lg:py-32">
+			{/* <div className="container py-24 lg:py-32">
 				<div className="relative py-16">
 					<BackgroundSection />
 					<SectionSliderNewCategories
@@ -59,7 +59,7 @@ const DetailPagetLayout = ({ children }: { children: ReactNode }) => {
 					/>
 				</div>
 
-			</div>
+			</div> */}
 
 			{/* STICKY FOOTER MOBILE */}
 			<MobileFooterSticky />
