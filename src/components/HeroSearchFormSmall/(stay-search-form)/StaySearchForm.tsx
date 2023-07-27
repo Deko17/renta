@@ -5,31 +5,31 @@ import StayDatesRangeInput from "./StayDatesRangeInput";
 import { StaySearchFormFields } from "components/HeroSearchForm/type";
 
 export interface StaySearchFormProps {
-  defaultFieldFocus?: StaySearchFormFields;
+	defaultFieldFocus?: StaySearchFormFields;
 }
 
 const StaySearchForm: FC<StaySearchFormProps> = ({ defaultFieldFocus }) => {
-  const renderForm = () => {
-    return (
-      <form className="relative flex rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800">
-        <LocationInput
+	const renderForm = () => {
+		return (
+			<form className="relative flex rounded-full border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-800">
+				{/* <LocationInput
           className="flex-[1.5]"
           autoFocus={defaultFieldFocus === "location"}
-        />
-        <div className="self-center border-r border-slate-200 dark:border-slate-700 h-8"></div>
-        <StayDatesRangeInput className="flex-[1.2]" />
+        /> */}
+				<div className="self-center border-r border-slate-200 dark:border-slate-700 h-8"></div>
+				<StayDatesRangeInput className="flex-[1.2]" />
 
-        <div className="self-center border-r border-slate-200 dark:border-slate-700 h-8"></div>
-        <GuestsInput
-          className="flex-1"
-          autoFocus={defaultFieldFocus === "guests"}
-          submitLink="/listing-stay"
-        />
-      </form>
-    );
-  };
+				<div className="self-center border-r border-slate-200 dark:border-slate-700 h-8"></div>
+				<GuestsInput
+					className="flex-1"
+					autoFocus={defaultFieldFocus === "guests"}
+					submitLink="/listing-stay"
+				/>
+			</form>
+		);
+	};
 
-  return renderForm();
+	return renderForm();
 };
 
 export default StaySearchForm;
