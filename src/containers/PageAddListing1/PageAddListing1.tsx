@@ -21,7 +21,7 @@ const PageAddListing1: FC<PageAddListing1Props> = () => {
 					{/* ITEM */}
 					<FormItem
 						label="Название объекта (ЖК)"
-						desc="Жилой комплекс"
+
 					>
 						<Select>
 							<option value="Hotel">Expo Avenue</option>
@@ -34,7 +34,7 @@ const PageAddListing1: FC<PageAddListing1Props> = () => {
 						</Select>
 					</FormItem>
 
-					<FormItem
+					{/* <FormItem
 						label="Форма Аренды"
 
 					>
@@ -43,7 +43,7 @@ const PageAddListing1: FC<PageAddListing1Props> = () => {
 							<option value="Private room">Посуточно</option>
 							<option value="Share room">По часам</option>
 						</Select>
-					</FormItem>
+					</FormItem> */}
 				</div>
 			</>
 		</CommonLayout>
