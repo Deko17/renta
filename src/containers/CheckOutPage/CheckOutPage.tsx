@@ -242,6 +242,10 @@ const CheckOutPagePageMain: FC<CheckOutPagePageMainProps> = ({
 											)}
 										</div>
 										<div className="space-y-1">
+											<Label>Номер счета </Label>
+											<Input />
+										</div>
+										<div className="space-y-1">
 											<Label>Card number </Label>
 											<Input defaultValue="111 112 222 999" />
 										</div>
